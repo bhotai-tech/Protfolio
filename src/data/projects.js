@@ -6,13 +6,26 @@ import urlShortener from "../assets/urlShortner.png";
 export const projects = [
   // ── Recent builds (2026): full cards ──
   {
+    title: "MagicSlides — AI Presentation Platform",
+    kind: "AI · Production SaaS",
+    image: null,
+    year: "2023–25",
+    description:
+      "Backend for a presentation generator used by 1.5M+ people: full decks in under 60 seconds from text, YouTube, PDFs, URLs and images, in 100+ languages, across Google Slides, Figma, GPT and Chrome. A Redis layer cut DB latency 50% at 10K+ concurrent sessions.",
+    stack: ["Node.js", "OpenAI", "Redis", "PostgreSQL", "AWS"],
+    github: null,
+    live: "https://www.magicslides.app",
+    featured: true,
+    group: "recent",
+  },
+  {
     title: "ZapMorph — Private File Converter",
     kind: "SaaS · WebAssembly",
     image: null,
     year: "2026",
     description:
-      "36 converters for images, PDFs, spreadsheets, audio and video that run entirely in the browser, so files never leave the device. Freemium with Pro and Lifetime plans.",
-    stack: ["Next.js 16", "ffmpeg.wasm", "pdf.js", "Supabase", "Paddle"],
+      "208 converters for images, PDFs, spreadsheets, data, audio and video that run entirely in the browser via WebAssembly, so files never leave the device. Freemium with Pro and Lifetime plans.",
+    stack: ["Next.js 16", "ffmpeg.wasm", "pdf.js", "Tesseract OCR", "Supabase", "Paddle"],
     github: null,
     live: "https://zapmorph.com",
     featured: true,
