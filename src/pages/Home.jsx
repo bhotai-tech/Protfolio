@@ -180,8 +180,13 @@ const About = () => (
       <Reveal className="card bento-now" onMouseMove={spotlight}>
         <span className="mini-label"><span className="status-dot" /> Currently</span>
         <p>
-          Building AI products at{" "}
-          <a href={experience[0].link} target="_blank" rel="noreferrer">{experience[0].company}</a> and documenting my
+          Building enterprise HRMS and AI workflows at{" "}
+          {experience[0].link ? (
+            <a href={experience[0].link} target="_blank" rel="noreferrer">{experience[0].company}</a>
+          ) : (
+            experience[0].company
+          )}{" "}
+          and documenting my
           prompts in the <Link to="/prompts">Prompt Library</Link>.
         </p>
       </Reveal>
@@ -224,6 +229,41 @@ const Skills = () => (
 );
 
 /* ─────────────────────────── WORK ─────────────────────────── */
+// Logo: explicit `logo` > the live site's own favicon > monogram fallback.
+const logoSrc = (p) => {
+  if (p.logo) return p.logo;
+  try {
+    return p.live ? new URL("/favicon.ico", p.live).href : null;
+  } catch {
+    return null;
+  }
+};
+
+const ProjectLogo = ({ p, size = "md" }) => {
+  const src = logoSrc(p);
+  const [failed, setFailed] = useState(false);
+  const initial = p.title.trim().charAt(0).toUpperCase();
+  return (
+    <span className={`project-logo project-logo-${size}`} aria-hidden="true">
+      {src && !failed ? <img src={src} alt="" loading="lazy" onError={() => setFailed(true)} /> : initial}
+    </span>
+  );
+};
+
+const ProjectTitle = ({ p, as: Tag = "h3", className }) => {
+  const href = p.live || p.github;
+  return (
+    <Tag className={className}>
+      <ProjectLogo p={p} />
+      {href ? (
+        <a href={href} target="_blank" rel="noreferrer" className="project-title-link">{p.title}</a>
+      ) : (
+        <span>{p.title}</span>
+      )}
+    </Tag>
+  );
+};
+
 const ProjectCover = ({ p }) =>
   p.image ? (
     <img src={p.image} alt={`${p.title} screenshot`} loading="lazy" />
@@ -244,7 +284,7 @@ const ProjectCard = ({ p, i, num }) => (
         <span className="mini-label">{p.kind}</span>
         <span className="project-num">{String(num).padStart(2, "0")}</span>
       </div>
-      <h3 className="project-title">{p.title}</h3>
+      <ProjectTitle p={p} className="project-title" />
       <p className="project-desc">{p.description}</p>
       <div className="chips chips-sm">
         {p.stack.map((s) => (
@@ -292,7 +332,7 @@ const Work = () => {
         {shownMore.map((p) => (
           <Reveal key={p.title} className="more-row" onMouseMove={spotlight}>
             <div className="more-main">
-              <h4>{p.title}</h4>
+              <ProjectTitle p={p} as="h4" className="more-title" />
               <p>{p.description}</p>
             </div>
             <div className="chips chips-sm more-stack">
@@ -401,7 +441,11 @@ const Experience = () => (
           <div className="card tl-card" onMouseMove={spotlight}>
             <h3>
               {x.role}{" "}
-              <a href={x.link} target="_blank" rel="noreferrer" className="tl-company">@ {x.company}</a>
+              {x.link ? (
+                <a href={x.link} target="_blank" rel="noreferrer" className="tl-company">@ {x.company}</a>
+              ) : (
+                <span className="tl-company">@ {x.company}</span>
+              )}
             </h3>
             <p className="tl-summary">{x.summary}</p>
             <ul className="tl-list">
@@ -515,7 +559,7 @@ const Contact = () => {
 };
 
 const Home = () => {
-  useDocumentMeta(null, `${profile.name} — full stack developer building AI-powered products. Projects, experience and a library of build guides from my reels.`);
+  useDocumentMeta(null, `${profile.name} — full stack engineer building scalable backends and AI-powered products. Projects, experience and a library of build guides from my reels.`);
   return (
     <>
       <Hero />

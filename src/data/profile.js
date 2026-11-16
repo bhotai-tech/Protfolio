@@ -10,7 +10,7 @@ export const yearsOfExperience = () => {
 export const profile = {
   name: "Adarsh Priyadarshi",
   firstName: "Adarsh",
-  roles: ["Full Stack Developer", "AI Product Builder", "Prompt Engineer", "Creator"],
+  roles: ["Full Stack Engineer", "Backend Systems", "AI / LLM Integration", "Creator"],
   location: "Bengaluru, India",
   available: true,
   email: "adarshpriyadarshi001@gmail.com",
@@ -24,15 +24,15 @@ export const profile = {
   tagline:
     "I build AI-powered products end to end — from the first prompt to production — and share how I do it.",
   bio: [
-    "I'm a full stack developer working across the MERN stack, Next.js and modern AI tooling. As the first employee at Indian App Guy I helped grow the engineering team while shipping AI presentation tools, an AI assistant (SecondBrain), TalkingPDF, the AskVideo.ai backend, Chrome extensions, Figma plugins, Telegram and calling bots.",
-    "Outside work I share the prompts and workflows I use to build things fast — every one of them is documented in my Prompt Library. I'm a National Merit-cum-Means Scholarship (NMMS) recipient, a cyclist, an NSS volunteer and a self-confessed pathetic dancer.",
+    "I'm a full stack engineer with 3+ years building high-scale backends and AI-integrated products in Node.js, NestJS, TypeScript, PostgreSQL and Kafka. At Buzzworks I build a multi-tenant enterprise HRMS with LLM-powered workflows; before that, as the first employee at IndianAppGuy, I led the MagicSlides backend to 1.5M+ users and mentored a team of 4.",
+    "Outside work I ship my own products and share the prompts and workflows I use to build fast — every one of them is documented in my Prompt Library. I'm a National Merit-cum-Means Scholarship (NMMS) recipient, a cyclist, an NSS volunteer and a self-confessed pathetic dancer.",
   ],
   traits: ["Builder", "Explorer", "Critical thinker", "Tech lover", "Cyclist", "Fitness enthusiast", "NSS volunteer"],
 };
 
 export const stats = () => [
   { value: `${yearsOfExperience()}+`, label: "Years shipping production code" },
-  { value: "15+", label: "Projects built & launched" },
-  { value: "#1", label: "First employee at Indian App Guy" },
+  { value: "1.5M+", label: "Users on MagicSlides backend" },
+  { value: "20+", label: "Projects built & launched" },
   { value: "NMMS", label: "National Merit Scholar" },
 ];
